@@ -1,0 +1,10 @@
+import { loadEnvFile } from 'node:process';
+import { neon } from '@neondatabase/serverless';
+loadEnvFile('.env');
+const sql = neon(process.env.DATABASE_URL);
+await sql`CREATE TABLE IF NOT EXISTS wedding_settings (id integer PRIMARY KEY CHECK (id = 1), config jsonb NOT NULL, updated_at timestamptz NOT NULL DEFAULT now())`;
+await sql`CREATE TABLE IF NOT EXISTS wedding_photos (id text PRIMARY KEY CHECK (id IN ('bl-40','bl-66','bl-85','bl-94')), data bytea NOT NULL, updated_at timestamptz NOT NULL DEFAULT now())`;
+await sql`CREATE TABLE IF NOT EXISTS wedding_guests (id uuid PRIMARY KEY, full_name varchar(160) NOT NULL, attendance text NOT NULL CHECK (attendance IN ('yes','no')), guest_count integer NOT NULL CHECK (guest_count BETWEEN 0 AND 12), message varchar(2000) NOT NULL DEFAULT '', recipient text NOT NULL CHECK (recipient IN ('any','bryan','lyndel')), created_at timestamptz NOT NULL DEFAULT now(), updated_at timestamptz NOT NULL DEFAULT now())`;
+await sql`CREATE TABLE IF NOT EXISTS wedding_sessions (token_hash text PRIMARY KEY, expires_at timestamptz NOT NULL)`;
+await sql`CREATE TABLE IF NOT EXISTS wedding_rate_limits (key text PRIMARY KEY, attempts integer NOT NULL, resets_at timestamptz NOT NULL)`;
+console.log('Tablas de la invitacion listas; no se insertaron invitados ni fotos de ejemplo.');
