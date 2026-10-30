@@ -165,7 +165,7 @@ export class ConfigAndExportDrawer {
     return `
       <form id="config-settings-form" class="rsvp-form" novalidate>
         <p class="rsvp-contact-note">
-          Personaliza la hora de inicio, los datos de la iglesia, los números de WhatsApp y los horarios del itinerario del <strong>19 de diciembre de 2026</strong>.
+          Personaliza la hora de inicio, los datos de la iglesia, los números de WhatsApp y los horarios del itinerario del <strong>18 de diciembre de 2026</strong>.
         </p>
 
         <div class="config-two-col">

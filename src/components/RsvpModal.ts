@@ -62,7 +62,7 @@ export class RsvpModal {
   public buildWhatsAppMessage(): string {
     const cleanName = this.formData.fullName.trim() || '[tu nombre]';
     const cleanOptionalMsg = this.formData.message.trim();
-    const shortDate = this.config.date.shortDate || '22/12/2026';
+    const shortDate = this.config.date.shortDate || '18/12/2026';
 
     if (this.formData.attendance === 'yes') {
       const count = Math.max(1, Number(this.formData.guestCount) || 1);

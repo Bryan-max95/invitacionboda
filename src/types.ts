@@ -31,9 +31,9 @@ export interface WeddingConfig {
     monogram: string;
   };
   date: {
-    isoDate: string; // YYYY-MM-DD (2026-12-19)
-    displayDate: string; // 19 de diciembre de 2026
-    shortDate: string; // 19/12/2026
+    isoDate: string; // YYYY-MM-DD (2026-12-18)
+    displayDate: string; // 18 de diciembre de 2026
+    shortDate: string; // 18/12/2026
     dayNumber: string; // 19
     monthShort: string; // DIC
     year: string; // 2026

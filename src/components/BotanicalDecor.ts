@@ -1,152 +1,42 @@
-/**
- * Ilustraciones botánicas delicadas en SVG para las esquinas de la portada,
- * el marco en arco de la fotografía principal, los divisores y el cierre.
- */
-export function renderCornerBotanicalSvg(
-  position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right',
-): string {
-  const transforms: Record<typeof position, string> = {
-    'top-left': 'rotate(0)',
-    'top-right': 'scale(-1, 1)',
-    'bottom-left': 'scale(1, -1)',
-    'bottom-right': 'scale(-1, -1)',
-  };
+﻿/** Lirios de seis pétalos, blancos y morados, acompañados de ramas de olivo. */
+function lily(x: number, y: number, scale: number, purple: boolean, angle = 0): string {
+  const petal = purple ? '#a58abe' : '#fffdf8';
+  const edge = purple ? '#75518f' : '#b9b49c';
+  return `<g transform="translate(${x} ${y}) rotate(${angle}) scale(${scale})">
+    ${[0, 60, 120, 180, 240, 300].map(rotation => `<g transform="rotate(${rotation})"><path d="M0 4 C-7-5-20-22-6-45 Q0-53 6-45 C20-22 7-5 0 4Z" fill="${petal}" stroke="${edge}" stroke-width=".8"/><path d="M0-2 Q-3-19 0-38" stroke="${edge}" stroke-width=".65" opacity=".45"/></g>`).join('')}
+    ${[-32, 0, 32].map(rotation => `<g transform="rotate(${rotation})"><path d="M0 1 Q5-8 3-18" stroke="#847644" stroke-width="1.2"/><ellipse cx="3" cy="-18" rx="1.8" ry="3" fill="#b4994c"/></g>`).join('')}
+    <circle r="3" fill="#a4a76a"/>
+  </g>`;
+}
 
-  return `
-    <svg
-      class="botanical-corner botanical-corner--${position}"
-      viewBox="0 0 220 220"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      style="transform: ${transforms[position]};"
-    >
-      <!-- Rama principal en dorado apagado y verde elegante -->
-      <path
-        d="M12 185 C 38 118, 92 56, 190 16"
-        stroke="#4B6049"
-        stroke-width="1.35"
-        stroke-linecap="round"
-        opacity="0.48"
-      />
-      <path
-        d="M8 140 C 48 92, 95 54, 152 34"
-        stroke="#AC9975"
-        stroke-width="1"
-        stroke-linecap="round"
-        opacity="0.52"
-      />
-      <!-- Hojas de olivo y eucalipto suaves -->
-      <path
-        d="M36 142 C 22 126, 26 105, 44 100 C 52 116, 48 134, 36 142 Z"
-        fill="#4B6049"
-        fill-opacity="0.18"
-        stroke="#4B6049"
-        stroke-width="1"
-        stroke-opacity="0.38"
-      />
-      <path
-        d="M58 114 C 76 122, 94 114, 100 98 C 82 94, 66 100, 58 114 Z"
-        fill="#4B6049"
-        fill-opacity="0.15"
-        stroke="#4B6049"
-        stroke-width="1"
-        stroke-opacity="0.35"
-      />
-      <path
-        d="M74 88 C 60 72, 64 52, 82 46 C 90 62, 86 78, 74 88 Z"
-        fill="#766580"
-        fill-opacity="0.14"
-        stroke="#766580"
-        stroke-width="1"
-        stroke-opacity="0.35"
-      />
-      <path
-        d="M104 66 C 122 72, 140 66, 148 50 C 130 46, 114 54, 104 66 Z"
-        fill="#4B6049"
-        fill-opacity="0.16"
-        stroke="#4B6049"
-        stroke-width="1"
-        stroke-opacity="0.36"
-      />
-      <path
-        d="M128 44 C 118 30, 124 16, 140 12 C 146 24, 140 36, 128 44 Z"
-        fill="#766580"
-        fill-opacity="0.14"
-        stroke="#766580"
-        stroke-width="1"
-        stroke-opacity="0.32"
-      />
-      <!-- Pequeños botones florales lavanda y dorado -->
-      <circle cx="84" cy="44" r="3" fill="#766580" fill-opacity="0.42" />
-      <circle cx="142" cy="12" r="2.5" fill="#AC9975" fill-opacity="0.55" />
-      <circle cx="102" cy="96" r="2.5" fill="#AC9975" fill-opacity="0.48" />
-    </svg>
-  `;
+function oliveBranch(): string {
+  return `<g stroke="#69733f" stroke-linecap="round">
+    <path d="M20 211 Q51 110 207 28 M45 164 Q44 113 26 78 M88 111 Q151 111 198 78" stroke-width="2" fill="none"/>
+    ${[[34,179,-32],[48,153,65],[66,128,-36],[90,105,60],[116,83,-30],[145,62,62],[177,43,-28],[43,128,-60],[33,99,-36],[132,105,50],[164,94,55]].map(([x,y,r]) => `<g transform="translate(${x} ${y}) rotate(${r})"><path d="M0 0 Q-14-16 0-38 Q14-16 0 0" fill="#899260" fill-opacity=".82" stroke-width=".6"/><path d="M0-3V-31" stroke-width=".7" opacity=".65"/></g>`).join('')}
+  </g>`;
+}
+
+export function renderCornerBotanicalSvg(position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right'): string {
+  const transforms = { 'top-left': 'rotate(0)', 'top-right': 'scale(-1, 1)', 'bottom-left': 'scale(1, -1)', 'bottom-right': 'scale(-1, -1)' };
+  return `<svg class="botanical-corner botanical-corner--${position}" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" style="transform:${transforms[position]}">
+    ${oliveBranch()}
+    ${lily(75, 156, .83, false, -15)}
+    ${lily(120, 91, .86, true, 15)}
+    ${lily(184, 55, .62, false, 30)}
+    ${lily(39, 213, .48, true, -25)}
+  </svg>`;
 }
 
 export function renderFloralDividerSvg(): string {
-  return `
-    <div class="floral-divider" aria-hidden="true">
-      <svg viewBox="0 0 320 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="16" y1="18" x2="124" y2="18" stroke="#AC9975" stroke-width="0.9" stroke-opacity="0.6" />
-        <line x1="196" y1="18" x2="304" y2="18" stroke="#AC9975" stroke-width="0.9" stroke-opacity="0.6" />
-        <path
-          d="M138 18 C 146 10, 154 10, 160 18 C 154 26, 146 26, 138 18 Z"
-          fill="#4B6049"
-          fill-opacity="0.22"
-          stroke="#4B6049"
-          stroke-width="1"
-        />
-        <path
-          d="M182 18 C 174 10, 166 10, 160 18 C 166 26, 174 26, 182 18 Z"
-          fill="#4B6049"
-          fill-opacity="0.22"
-          stroke="#4B6049"
-          stroke-width="1"
-        />
-        <circle cx="160" cy="18" r="3.2" fill="#AC9975" />
-        <circle cx="130" cy="18" r="1.8" fill="#766580" fill-opacity="0.65" />
-        <circle cx="190" cy="18" r="1.8" fill="#766580" fill-opacity="0.65" />
-      </svg>
-    </div>
-  `;
+  return `<div class="floral-divider" aria-hidden="true"><svg viewBox="0 0 420 100" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false">
+    <path d="M18 55 Q110 78 210 50 Q310 78 402 55" stroke="#78834e" stroke-width="1.2"/>
+    ${[65,100,135,285,320,355].map((x, i) => `<path d="M${x} 64 q${i < 3 ? '-20' : '20'}-4 ${i < 3 ? '-24' : '24'}-23 q${i < 3 ? '23' : '-23'} 2 ${i < 3 ? '24' : '-24'} 23Z" fill="#899260" fill-opacity=".7"/>`).join('')}
+    ${lily(167, 53, .56, false, -20)}${lily(210, 45, .79, true)}${lily(254, 53, .56, false, 20)}
+  </svg></div>`;
 }
 
 export function renderArchBotanicalSprigSvg(): string {
-  return `
-    <svg
-      class="arch-botanical-sprig"
-      viewBox="0 0 180 180"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M22 158 C 46 108, 86 64, 154 24"
-        stroke="#AC9975"
-        stroke-width="1.3"
-        stroke-linecap="round"
-      />
-      <path
-        d="M48 122 C 34 106, 38 86, 56 80 C 64 96, 60 112, 48 122 Z"
-        fill="#E1E7D9"
-        stroke="#4B6049"
-        stroke-width="1.1"
-      />
-      <path
-        d="M72 98 C 90 104, 108 98, 114 82 C 98 78, 82 86, 72 98 Z"
-        fill="#E2D8E8"
-        stroke="#766580"
-        stroke-width="1.1"
-      />
-      <path
-        d="M96 68 C 84 54, 88 36, 104 30 C 112 44, 108 58, 96 68 Z"
-        fill="#E1E7D9"
-        stroke="#4B6049"
-        stroke-width="1.1"
-      />
-      <circle cx="122" cy="44" r="3.5" fill="#AC9975" />
-    </svg>
-  `;
+  return `<svg class="arch-botanical-sprig" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    ${oliveBranch()}${lily(92, 133, .95, false, -20)}${lily(154, 73, .9, true, 20)}${lily(48, 202, .58, true)}
+  </svg>`;
 }

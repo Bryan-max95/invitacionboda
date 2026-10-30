@@ -2891,3 +2891,16 @@ button:disabled, [aria-disabled="true"] { opacity: .65; cursor: wait; }
   .admin-panel-page .config-two-col,
   .admin-panel-page .admin-itinerary-row { grid-template-columns: 1fr; }
 }
+
+/* Lirios blancos y morados con follaje de olivo. */
+.botanical-corner {
+  width: clamp(145px, 23vw, 280px);
+  height: clamp(145px, 23vw, 280px);
+}
+.floral-divider { padding: 12px 20px; }
+.floral-divider svg { width: min(420px, 88vw); height: auto; }
+.arch-botanical-sprig { width: clamp(150px, 20vw, 210px); height: auto; top: -36px; right: -24px; }
+@media (max-width: 600px) {
+  .closing-botanicals .botanical-corner { width: 130px; height: 130px; opacity: .8; }
+  .arch-botanical-sprig { top: -22px; right: -12px; width: 150px; }
+}

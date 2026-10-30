@@ -356,7 +356,7 @@ export class WeddingInvitationView {
                     </div>
                   </button>
 
-                  <!-- Detalle circular lavanda con el día y el mes de la boda (19 DIC) -->
+                  <!-- Detalle circular lavanda con el día y el mes de la boda (18 DIC) -->
                   <div class="hero-lavender-date-badge" aria-label="Fecha de la boda: ${this.config.date.dayNumber} de diciembre">
                     <span class="hero-lavender-date-badge__day tabular-nums">${this.config.date.dayNumber}</span>
                     <span class="hero-lavender-date-badge__rule" aria-hidden="true"></span>
@@ -383,7 +383,7 @@ export class WeddingInvitationView {
                 <div class="ceremony-detail-item">
                   <span class="ceremony-detail-label">El día</span>
                   <strong class="ceremony-detail-value">${this.config.date.displayDate}</strong>
-                  <span class="ceremony-detail-sub">Sábado · Celebración nupcial</span>
+                  <span class="ceremony-detail-sub">Viernes · Celebración nupcial</span>
                 </div>
 
                 <!-- Columna 2: La hora (5:00 PM Invitados / 6:00 PM Novios) -->

@@ -1,7 +1,7 @@
 import { CountdownResult, WeddingConfig } from '../types';
 
 /**
- * Calcula los días calendario restantes hasta la fecha de la boda (22 de diciembre de 2026)
+ * Calcula los días calendario restantes hasta la fecha de la boda (18 de diciembre de 2026)
  * utilizando estrictamente la zona horaria de Honduras (America/Tegucigalpa).
  *
  * - Si faltan días (> 0): status = 'upcoming', daysRemaining = N
@@ -37,7 +37,7 @@ export function calculateWeddingCountdown(
   const [targetYearStr, targetMonthStr, targetDayStr] = config.date.isoDate.split('-');
   const targetYear = parseInt(targetYearStr || '2026', 10);
   const targetMonth = parseInt(targetMonthStr || '12', 10);
-  const targetDay = parseInt(targetDayStr || '22', 10);
+  const targetDay = parseInt(targetDayStr || '18', 10);
 
   // Convert both calendar dates to UTC midnight timestamps to count exact calendar days
   const currentUtcMidnight = Date.UTC(curYear, curMonth - 1, curDay);

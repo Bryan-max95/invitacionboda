@@ -2,7 +2,7 @@ import { WeddingConfig } from '../types';
 
 /**
  * Archivo central de configuración de la invitación de boda.
- * Todos los datos de nombres, fecha (19 de diciembre de 2026), hora,
+ * Todos los datos de nombres, fecha (18 de diciembre de 2026), hora,
  * itinerario, nombre de la iglesia, dirección, enlace de ubicación y teléfonos de WhatsApp
  * se pueden modificar directamente desde aquí o desde el Panel de Administrador.
  */
@@ -17,10 +17,10 @@ export const DEFAULT_WEDDING_CONFIG: WeddingConfig = {
     monogram: 'B & L',
   },
   date: {
-    isoDate: '2026-12-19',
-    displayDate: '19 de diciembre de 2026',
-    shortDate: '19/12/2026',
-    dayNumber: '19',
+    isoDate: '2026-12-18',
+    displayDate: '18 de diciembre de 2026',
+    shortDate: '18/12/2026',
+    dayNumber: '18',
     monthShort: 'DIC',
     year: '2026',
     timezone: 'America/Tegucigalpa',
