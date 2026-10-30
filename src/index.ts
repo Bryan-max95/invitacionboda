@@ -126,6 +126,7 @@ export class WeddingInvitationApp {
   }
 
   public dispose(): void {
+    this.invitationView?.dispose();
     if (this.countdownTimerId !== null) {
       window.clearInterval(this.countdownTimerId);
     }

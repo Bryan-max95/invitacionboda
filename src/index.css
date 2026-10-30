@@ -645,7 +645,7 @@ button {
 .invitation-wrapper--visible {
   display: block;
   opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: none;
 }
 
 /* Barra superior (3 zonas limpias) */
@@ -2386,7 +2386,7 @@ button {
   box-shadow: -16px 0 44px rgba(34, 41, 31, 0.24);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 22px 20px 26px;
   overflow-y: auto;
   transform: translateX(104%);
@@ -2903,4 +2903,62 @@ button:disabled, [aria-disabled="true"] { opacity: .65; cursor: wait; }
 @media (max-width: 600px) {
   .closing-botanicals .botanical-corner { width: 130px; height: 130px; opacity: .8; }
   .arch-botanical-sprig { top: -22px; right: -12px; width: 150px; }
+}
+
+/* La navegación móvil permanece anclada a la pantalla, incluso al desplazarse. */
+html.invitation-menu-open,
+html.invitation-menu-open body { overflow: hidden; }
+.invitation-main [id] { scroll-margin-top: 88px; }
+@media (max-width: 900px) {
+  .invitation-wrapper--visible { padding-top: calc(68px + env(safe-area-inset-top, 0px)); }
+  .invitation-topbar {
+    position: fixed;
+    inset: 0 0 auto;
+    min-height: calc(68px + env(safe-area-inset-top, 0px));
+    padding: calc(10px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px));
+    gap: 12px;
+  }
+  .topbar-brand { min-width: 0; font-size: clamp(1.5rem, 6vw, 1.85rem); }
+  .topbar-action { flex-shrink: 0; }
+  .mobile-nav-drawer {
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+    gap: 12px;
+    overscroll-behavior: contain;
+  }
+  .mobile-nav-drawer > * { flex-shrink: 0; min-width: 0; }
+  .mobile-nav-drawer__header { margin-bottom: 0; }
+  .mobile-nav-drawer__brand { min-width: 0; }
+  .mobile-nav-drawer__date { display: block; font-size: .72rem; }
+  .mobile-nav-drawer__schedule-pill { margin: 0; padding: 8px 12px; flex-direction: row; flex-wrap: wrap; gap: 2px 8px; font-size: .75rem; }
+  .mobile-nav-drawer__schedule-pill > span[aria-hidden] { display: none; }
+  .mobile-nav-drawer__links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; }
+  .mobile-nav-link { min-width: 0; min-height: 64px; padding: 10px 12px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; font-size: 1rem; line-height: 1.25; }
+  .mobile-nav-link__sub { font: 400 .7rem/1.4 var(--font-sans); overflow-wrap: anywhere; }
+  .mobile-nav-drawer__actions { padding-top: 12px; gap: 8px; }
+  .mobile-nav-drawer__btn-full { width: 100%; }
+  .mobile-nav-drawer__grid-btns > button { min-width: 0; padding-inline: 10px; }
+  .hero-container, .promise-container { min-width: 0; }
+  .hero-container > *, .promise-container > *, .itinerary-step-card__body { min-width: 0; }
+  .hero-calligraphy-names { font-size: clamp(2.8rem, 12vw, 4.5rem); overflow-wrap: anywhere; }
+  .hero-full-names, .ceremony-detail-value, .ceremony-detail-address, .itinerary-step-card__title { overflow-wrap: anywhere; }
+  .hero-photo-col, .promise-photo-col, .gallery-photo-card { max-width: 100%; min-width: 0; }
+  .invitation-main img { max-width: 100%; }
+  .hero-arch-wrapper { max-width: 100%; }
+  .hero-cta-group > *, .closing-actions-group > * { white-space: normal; text-align: center; }
+  .invitation-utility-footer .utility-footer-inner { flex-wrap: wrap; overflow-wrap: anywhere; }
+}
+@media (max-width: 380px) {
+  .hero-section, .ceremony-section, .itinerary-section, .promise-section, .gallery-section { padding-inline: 16px; }
+  .itinerary-step-card { padding: 18px 14px; gap: 12px; }
+  .itinerary-step-card__badge { width: 44px; }
+}
+@media (max-width: 900px) and (max-height: 600px) {
+  .mobile-nav-drawer { gap: 8px; padding-top: max(8px, env(safe-area-inset-top, 0px)); padding-bottom: max(8px, env(safe-area-inset-bottom, 0px)); }
+  .mobile-nav-drawer__schedule-pill, .mobile-nav-link__sub { display: none; }
+  .mobile-nav-link { min-height: 44px; padding-block: 8px; }
+  .mobile-nav-drawer__actions { padding-top: 8px; }
 }

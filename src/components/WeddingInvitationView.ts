@@ -22,6 +22,9 @@ export class WeddingInvitationView {
   private countdown: CountdownResult;
   private callbacks: InvitationViewCallbacks;
   private isVisible = false;
+  private readonly onResize = () => {
+    if (window.innerWidth > 900 && this.isMobileMenuOpen) this.setMobileMenuOpen(false);
+  };
 
   constructor(
     container: HTMLElement,
@@ -33,6 +36,12 @@ export class WeddingInvitationView {
     this.config = config;
     this.countdown = countdown;
     this.callbacks = callbacks;
+    window.addEventListener('resize', this.onResize);
+  }
+
+  public dispose(): void {
+    document.documentElement.classList.remove('invitation-menu-open');
+    window.removeEventListener('resize', this.onResize);
   }
 
   public showWithReveal(): void {
@@ -47,6 +56,7 @@ export class WeddingInvitationView {
   }
 
   public hideForEnvelope(): void {
+    this.setMobileMenuOpen(false);
     this.isVisible = false;
     const wrapper = this.container.querySelector<HTMLElement>('#invitation-main-wrapper');
     if (wrapper) {
@@ -135,9 +145,22 @@ export class WeddingInvitationView {
     if (drawer) {
       drawer.classList.toggle('is-open', open);
       drawer.setAttribute('aria-hidden', String(!open));
+      drawer.inert = !open;
+      drawer.scrollTop = 0;
     }
     if (backdrop) {
       backdrop.classList.toggle('is-open', open);
+    }
+    document.documentElement.classList.toggle('invitation-menu-open', open);
+    this.container.querySelectorAll<HTMLElement>('.invitation-topbar, .invitation-main, .invitation-utility-footer').forEach(element => {
+      element.inert = open;
+    });
+    if (open) {
+      requestAnimationFrame(() => {
+        if (this.isMobileMenuOpen) drawer?.querySelector<HTMLButtonElement>('#mobile-menu-close-btn')?.focus({ preventScroll: true });
+      });
+    } else {
+      toggleBtn?.focus({ preventScroll: true });
     }
   }
 
@@ -210,7 +233,10 @@ export class WeddingInvitationView {
           id="mobile-nav-drawer"
           class="mobile-nav-drawer"
           aria-label="Menú móvil de la invitación"
+          role="dialog"
+          aria-modal="true"
           aria-hidden="true"
+          inert
         >
           <div class="mobile-nav-drawer__header">
             <div class="mobile-nav-drawer__brand">
@@ -662,6 +688,12 @@ export class WeddingInvitationView {
       '#mobile-menu-close-btn',
     );
     const mobileNavBackdrop = this.container.querySelector<HTMLElement>('#mobile-nav-backdrop');
+    const mobileDrawer = this.container.querySelector<HTMLElement>('#mobile-nav-drawer');
+    mobileDrawer?.addEventListener('transitionend', event => {
+      if (event.propertyName === 'transform' && this.isMobileMenuOpen && !mobileDrawer.contains(document.activeElement)) {
+        mobileMenuCloseBtn?.focus({ preventScroll: true });
+      }
+    });
 
     mobileMenuToggleBtn?.addEventListener('click', () => {
       this.setMobileMenuOpen(!this.isMobileMenuOpen);
@@ -671,6 +703,22 @@ export class WeddingInvitationView {
     });
     mobileNavBackdrop?.addEventListener('click', () => {
       this.setMobileMenuOpen(false);
+    });
+    this.container.querySelector<HTMLElement>('#mobile-nav-drawer')?.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        this.setMobileMenuOpen(false);
+      }
+      if (event.key === 'Tab') {
+        const controls = Array.from(this.container.querySelectorAll<HTMLElement>('#mobile-nav-drawer a[href], #mobile-nav-drawer button'));
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault(); last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault(); first?.focus();
+        }
+      }
     });
 
     this.container.querySelectorAll<HTMLAnchorElement>('[data-mobile-nav-link]').forEach((link) => {
