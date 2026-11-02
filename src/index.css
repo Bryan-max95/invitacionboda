@@ -2972,6 +2972,32 @@ html.invitation-menu-open body { overflow: hidden; }
 .botanical-corner--top-right, .botanical-corner--bottom-left { display:none; }
 .envelope-cover { background-color:var(--bg-primary); background-image:radial-gradient(circle at 50% 42%,var(--bg-primary) 35%,var(--sage-soft) 100%); }
 .invitation-wrapper { background-color:var(--bg-primary); background-image:none; }
+/* Floral corners continue through the invitation after opening the envelope. */
+.invitation-main > section:not(.closing-sage-section) {
+  position:relative;
+  isolation:isolate;
+  padding-block:clamp(120px,12vw,160px);
+}
+.invitation-main > section:not(.closing-sage-section)::before,
+.invitation-main > section:not(.closing-sage-section)::after {
+  content:"";
+  position:absolute;
+  width:clamp(140px,19vw,240px);
+  aspect-ratio:1;
+  background:url('/images/flores-esquina.png') center / contain no-repeat;
+  pointer-events:none;
+  z-index:-1;
+  opacity:.9;
+}
+.invitation-main > section:not(.closing-sage-section)::before { top:0; left:0; }
+.invitation-main > section:not(.closing-sage-section)::after { bottom:0; right:0; transform:rotate(180deg); }
+.invitation-main > section:nth-of-type(even):not(.closing-sage-section)::before { left:auto; right:0; transform:scaleX(-1); }
+.invitation-main > section:nth-of-type(even):not(.closing-sage-section)::after { right:auto; left:0; transform:scaleY(-1); }
+@media(max-width:600px) {
+  .invitation-main > section:not(.closing-sage-section) { padding-block:100px; }
+  .invitation-main > section:not(.closing-sage-section)::before,
+  .invitation-main > section:not(.closing-sage-section)::after { width:115px; opacity:.85; }
+}
 .envelope-cover__header { padding:14px 22px; border-radius:20px; background:#faf7eff2; }
 .envelope-cover__kicker, .envelope-cover__couple-names, .section-kicker, .section-serif-title { color:#54435e; }
 .envelope-cover__subtitle, .hero-description, .gallery-subtitle, .closing-message { color:#34432f; }
