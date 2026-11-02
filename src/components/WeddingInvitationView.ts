@@ -165,7 +165,7 @@ export class WeddingInvitationView {
   }
 
   public render(): void {
-    const heroPhoto = this.config.photos.find((p) => p.id === 'bl-40') || this.config.photos[0];
+    const heroPhoto = this.config.photos.find((p) => p.role === 'hero') || this.config.photos[0];
     const promisePhoto = this.config.photos.find((p) => p.id === 'bl-66') || this.config.photos[1];
 
     const formattedTime = escapeHtml(formatWeddingTime(this.config));
@@ -187,7 +187,7 @@ export class WeddingInvitationView {
             <a href="#itinerario" class="topbar-link whitespace-nowrap shrink-0">Itinerario</a>
             <a href="#historia" class="topbar-link whitespace-nowrap shrink-0">Nuestra historia</a>
             <a href="#galeria" class="topbar-link whitespace-nowrap shrink-0">Galería</a>
-            <a href="#cierre" class="topbar-link whitespace-nowrap shrink-0">Confirmar</a>
+            <a href="#cierre" class="topbar-link whitespace-nowrap shrink-0">Asistir</a>
           </nav>
 
           <div class="topbar-action shrink-0">
@@ -284,8 +284,8 @@ export class WeddingInvitationView {
               <span class="mobile-nav-link__sub">Nuestros momentos especiales</span>
             </a>
             <a href="#cierre" class="mobile-nav-link" data-mobile-nav-link>
-              <span class="mobile-nav-link__title">Confirmar Asistencia</span>
-              <span class="mobile-nav-link__sub">Confirmación por WhatsApp</span>
+              <span class="mobile-nav-link__title">Asistir</span>
+              <span class="mobile-nav-link__sub">Registra hasta 3 personas</span>
             </a>
           </nav>
 
@@ -295,7 +295,7 @@ export class WeddingInvitationView {
               id="mobile-drawer-rsvp-btn"
               class="btn-primary mobile-nav-drawer__btn-full"
             >
-              Confirmar invitación
+              Asistir
             </button>
             <div class="mobile-nav-drawer__grid-btns">
               <button
@@ -352,7 +352,7 @@ export class WeddingInvitationView {
                     id="hero-open-rsvp-btn"
                     class="btn-primary whitespace-nowrap shrink-0"
                   >
-                    Confirmar invitación
+                    Asistir
                   </button>
                 </div>
               </div>
@@ -606,7 +606,7 @@ export class WeddingInvitationView {
                   id="closing-open-rsvp-btn"
                   class="btn-primary whitespace-nowrap shrink-0"
                 >
-                  Confirmar invitación
+                  Asistir
                 </button>
                 <button
                   type="button"

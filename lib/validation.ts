@@ -9,5 +9,6 @@ export const settingsSchema = z.object({
 });
 export const guestSchema = z.object({
   id: z.uuid(), fullName: z.string().trim().min(2).max(160), attendance: z.enum(['yes', 'no']),
-  guestCount: z.number().int().min(1).max(12), message: z.string().trim().max(2000), recipientTarget: z.enum(['any', 'bryan', 'lyndel']),
-});
+  guestNames: z.array(z.string().trim().min(2).max(160)).min(1).max(3),
+  guestCount: z.number().int().min(1).max(3), message: z.string().trim().max(2000), recipientTarget: z.enum(['any', 'bryan', 'lyndel']),
+}).refine(g => g.guestNames.length === g.guestCount && g.guestNames[0] === g.fullName && (g.attendance === 'yes' || g.guestNames.length === 1));

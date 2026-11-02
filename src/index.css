@@ -2962,3 +2962,49 @@ html.invitation-menu-open body { overflow: hidden; }
   .mobile-nav-link { min-height: 44px; padding-block: 8px; }
   .mobile-nav-drawer__actions { padding-top: 8px; }
 }
+
+/* Papeler?a de los novios y marco de acuarela original. */
+.wedding-monogram { display:block; width:min(440px,85vw); height:auto; margin:auto; mix-blend-mode:multiply; }
+.envelope-cover__botanicals, .closing-botanicals { background:none; opacity:1; pointer-events:none; overflow:hidden; }
+.botanical-corner { display:block; width:clamp(140px,23vw,330px); height:auto; aspect-ratio:1; background:url('/images/flores-esquina.png') center / contain no-repeat; opacity:.92; }
+.botanical-corner--top-left { top:0; left:0; transform:none; }
+.botanical-corner--bottom-right { bottom:0; right:0; transform:rotate(180deg); }
+.botanical-corner--top-right, .botanical-corner--bottom-left { display:none; }
+.envelope-cover { background-color:var(--bg-primary); background-image:radial-gradient(circle at 50% 42%,var(--bg-primary) 35%,var(--sage-soft) 100%); }
+.invitation-wrapper { background-color:var(--bg-primary); background-image:none; }
+.envelope-cover__header { padding:14px 22px; border-radius:20px; background:#faf7eff2; }
+.envelope-cover__kicker, .envelope-cover__couple-names, .section-kicker, .section-serif-title { color:#54435e; }
+.envelope-cover__subtitle, .hero-description, .gallery-subtitle, .closing-message { color:#34432f; }
+.closing-container { padding:24px; border-radius:20px; background:#e1e7d9f5; }
+@media(max-width:600px) {
+  .botanical-corner { width:clamp(110px,33vw,160px); opacity:.85; }
+  .envelope-cover__header { padding:12px 16px; }
+  .closing-container { padding:20px 8px; }
+  .envelope-cover__subtitle, .gallery-subtitle, .closing-message { font-size:1rem; line-height:1.75; }
+}
+[hidden] { display:none !important; }
+.admin-workspace { min-height:100vh; background:#f3f5f1; padding-bottom:40px; }
+.admin-session-bar { background:#263d32; color:#fff; padding:18px max(24px,calc((100vw - 1120px)/2)); }
+.admin-session-bar .btn-secondary { background:#fff; }
+.admin-dashboard-heading { max-width:1120px; margin:auto; padding:48px 24px 32px; }
+.admin-dashboard-heading p { color:#766580; font-size:11px; letter-spacing:2px; }
+.admin-dashboard-heading h1 { font-family:Georgia,serif; font-weight:400; font-size:clamp(28px,4vw,42px); margin:12px 0; color:#263d32; }
+.admin-dashboard-heading > span { color:#657367; }
+.admin-guests,.admin-panel-card { border:1px solid #dce3d9; border-radius:18px; box-shadow:0 8px 28px #263d3208; padding:clamp(18px,3vw,32px); background:#fff; }
+.admin-panel-page { min-height:0; background:transparent; padding:0 16px; }
+.admin-guests { margin-bottom:28px; }
+.admin-stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:24px 0; }
+.admin-stat-grid > div { padding:20px; border-radius:12px; background:#f1f5ef; }
+.admin-stat-grid > div:nth-child(2) { background:#e8efe6; }
+.admin-stat-grid > div:nth-child(3) { background:#f0ecf4; }
+.admin-stat-grid span { display:block; color:#596758; font-size:12px; }
+.admin-stat-grid strong { display:block; margin-top:12px; font-size:32px; font-weight:500; color:#263d32; }
+.admin-guest-tools { display:flex; gap:12px; margin:20px 0; }
+.admin-guest-tools select { max-width:230px; }
+.admin-guests-table th { font-size:11px; text-transform:uppercase; letter-spacing:1px; background:#f6f7f4; color:#657367; }
+.admin-guests-table td { font-size:14px; padding:18px 12px; }
+.admin-companion { display:block; margin-top:7px; color:#657367; }
+.admin-status { display:inline-block; border-radius:20px; padding:5px 10px; white-space:nowrap; font-size:12px; }
+.admin-status--yes { background:#e8f0e5; color:#365735; }
+.admin-status--no { background:#f0ecf4; color:#766580; }
+@media(max-width:600px) { .admin-stat-grid { grid-template-columns:1fr; gap:8px; } .admin-stat-grid > div { display:flex; align-items:center; justify-content:space-between; padding:14px; } .admin-stat-grid strong { margin:0; font-size:26px; } .admin-guest-tools { flex-direction:column; } .admin-guest-tools select { max-width:none; } }

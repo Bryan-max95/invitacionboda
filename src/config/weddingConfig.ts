@@ -105,7 +105,7 @@ export const DEFAULT_WEDDING_CONFIG: WeddingConfig = {
     {
       id: 'bl-40',
       filename: 'B&L-40.jpg',
-      role: 'hero',
+      role: 'gallery-night',
       title: 'Frente al mar al atardecer',
       caption: 'Bryan y Lyndel juntos frente al mar al atardecer.',
       alt: 'Fotografía principal: Bryan y Lyndel juntos frente al mar al atardecer (B&L-40.jpg)',
@@ -138,12 +138,12 @@ export const DEFAULT_WEDDING_CONFIG: WeddingConfig = {
     {
       id: 'bl-94',
       filename: 'B&L-94.jpg',
-      role: 'gallery-night',
+      role: 'hero',
       title: 'Bajo el cielo nocturno',
       caption: 'Bryan y Lyndel juntos bajo el cielo estrellado nocturno.',
       alt: 'Galería: Bryan y Lyndel juntos bajo el cielo nocturno (B&L-94.jpg)',
       aspectRatio: '3:4',
-      focalPoint: '50% 38%',
+      focalPoint: '50% 55%',
       publicPath: '/images/B&L-94.jpg',
     },
   ],

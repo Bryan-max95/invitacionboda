@@ -8,3 +8,5 @@ await sql`CREATE TABLE IF NOT EXISTS wedding_guests (id uuid PRIMARY KEY, full_n
 await sql`CREATE TABLE IF NOT EXISTS wedding_sessions (token_hash text PRIMARY KEY, expires_at timestamptz NOT NULL)`;
 await sql`CREATE TABLE IF NOT EXISTS wedding_rate_limits (key text PRIMARY KEY, attempts integer NOT NULL, resets_at timestamptz NOT NULL)`;
 console.log('Tablas de la invitacion listas; no se insertaron invitados ni fotos de ejemplo.');
+
+await sql`ALTER TABLE wedding_guests ADD COLUMN IF NOT EXISTS guest_names jsonb NOT NULL DEFAULT '[]'::jsonb`;

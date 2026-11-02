@@ -7,5 +7,5 @@ export function getPhotoSrc(photo: PhotoItem): string {
 }
 
 export function hasCustomPhoto(photo: PhotoItem): boolean {
-  return photo.publicPath.startsWith('/api/photos/');
+  return photo.publicPath.startsWith('/api/photos/') || photo.publicPath.startsWith('/images/');
 }
