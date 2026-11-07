@@ -246,7 +246,7 @@ export class ConfigAndExportDrawer {
         </div>
 
         <div class="admin-itinerary-editor">
-          <span class="rsvp-label">Itinerario de la Boda (5 momentos · Inicio 5:00 PM)</span>
+          <span class="rsvp-label">Itinerario de la Boda (${this.config.itinerary.length} momentos)</span>
           ${this.config.itinerary
             .map(
               (item, index) => `

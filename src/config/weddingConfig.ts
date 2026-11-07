@@ -26,9 +26,9 @@ export const DEFAULT_WEDDING_CONFIG: WeddingConfig = {
     timezone: 'America/Tegucigalpa',
   },
   time: {
-    hour: '5:00',
+    hour: '6:00',
     meridiem: 'PM',
-    activityLabel: 'Llegada de invitados: 5:00 PM · Entrada de los novios: 6:00 PM',
+    activityLabel: 'Llegada de invitados: 6:00 PM · Entrada de la novia: 7:00 PM',
   },
   venue: {
     placeLabel: 'Iglesia',
@@ -46,42 +46,34 @@ export const DEFAULT_WEDDING_CONFIG: WeddingConfig = {
   itinerary: [
     {
       id: 'recepcion-invitados',
-      time: '5:00 PM',
+      time: '6:00 PM',
       title: 'Recepción y Llegada de Invitados',
       description:
-        'Apertura de puertas y bienvenida en la iglesia. Te invitamos a llegar puntualmente a las 5:00 PM para ubicarte con comodidad.',
+        'Te recibimos a las 6:00 PM para compartir la bienvenida y ubicarte con comodidad antes de la ceremonia.',
       icon: 'reception',
     },
     {
       id: 'ceremonia',
-      time: '6:00 PM – 7:00 PM',
-      title: 'Entrada del Novio y la Novia · Ceremonia Nupcial',
+      time: '7:00 PM',
+      title: 'Entrada de la Novia · Ceremonia Nupcial',
       description:
-        'A las 6:00 PM inicia la entrada solemne del novio y la novia para celebrar nuestro pacto matrimonial ante Dios (finalizando a las 7:00 PM como máximo).',
+        'A las 7:00 PM llega la novia y comienza nuestra ceremonia para celebrar el pacto matrimonial ante Dios.',
       icon: 'ceremony',
     },
     {
-      id: 'adoracion-1',
-      time: '7:00 PM',
-      title: 'Tiempo de Adoración y Alabanza',
-      description:
-        'Unidos en un mismo sentir, elevamos una canción de adoración y gratitud a Dios por Su fidelidad y bendición sobre nuestro hogar.',
-      icon: 'worship',
-    },
-    {
       id: 'comida',
-      time: '7:45 PM',
-      title: 'Cena y Banquete Nupcial',
+      time: '7:50 PM',
+      title: 'Cena y Banquete · Música de Adoración',
       description:
-        'Compartimos juntos la mesa con una cena especial preparada con mucho cariño para disfrutar en familia y comunión.',
+        'A las 7:50 PM compartimos la cena y el banquete nupcial, acompañados de música de adoración a Dios, en familia y comunión.',
       icon: 'dinner',
     },
     {
       id: 'adoracion-final',
-      time: '9:00 PM',
-      title: 'Adoración Final y Bendición',
+      time: '9:30 PM',
+      title: 'Adoración, Música y Alabanza Final',
       description:
-        'Cerramos esta noche tan especial con una última alabanza a Dios y una oración de agradecimiento y despedida.',
+        'A las 9:30 PM cerramos esta noche especial con música de adoración, alabanza a Dios y una oración de agradecimiento y despedida.',
       icon: 'closing-worship',
     },
   ],
@@ -153,7 +145,7 @@ export const DEFAULT_WEDDING_CONFIG: WeddingConfig = {
  * Formatea la hora configurada incluyendo AM/PM únicamente si ya fue definido.
  */
 export function formatWeddingTime(config: WeddingConfig): string {
-  const baseHour = config.time.hour.trim() || '5:00';
+  const baseHour = config.time.hour.trim() || '6:00';
   const meridiem = config.time.meridiem.trim();
   return meridiem ? `${baseHour} ${meridiem}` : baseHour;
 }

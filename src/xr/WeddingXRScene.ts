@@ -2118,7 +2118,7 @@ export class Wedding3DExperience {
     ctx.fillStyle = '#766580';
     ctx.font = '600 24px "Plus Jakarta Sans", sans-serif';
     ctx.fillText(
-      `${this.config.date.displayDate.toUpperCase()}  ·  INICIO: 5:00 PM`,
+      `${this.config.date.displayDate.toUpperCase()}  ·  INICIO: ${formatWeddingTime(this.config)}`,
       512,
       552,
     );
@@ -2126,7 +2126,7 @@ export class Wedding3DExperience {
     ctx.fillStyle = '#4B6049';
     ctx.font = '600 20px "Plus Jakarta Sans", sans-serif';
     ctx.fillText(
-      'LLEGADA DE INVITADOS: 5:00 PM  ·  ENTRADA DE LOS NOVIOS: 6:00 PM',
+      this.config.time.activityLabel.toUpperCase(),
       512,
       594,
     );

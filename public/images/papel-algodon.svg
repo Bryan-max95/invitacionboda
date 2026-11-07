@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+  <defs>
+    <filter id="paper" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".62 .86" numOctaves="3" stitchTiles="stitch" result="grain"/>
+      <feDiffuseLighting in="grain" surfaceScale="1.5" diffuseConstant=".8" lighting-color="#fff" result="relief"><feDistantLight azimuth="225" elevation="48"/></feDiffuseLighting>
+      <feColorMatrix in="relief" type="saturate" values="0"/>
+    </filter>
+  </defs>
+  <rect width="320" height="320" filter="url(#paper)" opacity=".14"/>
+</svg>

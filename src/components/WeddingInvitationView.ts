@@ -170,6 +170,7 @@ export class WeddingInvitationView {
     const promisePhoto = this.config.photos.find((p) => p.id === 'bl-66') || this.config.photos[1];
 
     const formattedTime = escapeHtml(formatWeddingTime(this.config));
+    const brideArrivalTime = escapeHtml(this.config.itinerary.find(item => item.id === 'ceremonia')?.time || '7:00 PM');
     const venueInfo = formatVenueDisplay(this.config);
 
     this.container.innerHTML = `
@@ -258,9 +259,9 @@ export class WeddingInvitationView {
           </div>
 
           <div class="mobile-nav-drawer__schedule-pill">
-            <span><strong>5:00 PM</strong> Llegada de invitados</span>
+            <span><strong>${formattedTime}</strong> Llegada de invitados</span>
             <span aria-hidden="true">·</span>
-            <span><strong>6:00 PM</strong> Entrada de novios</span>
+            <span><strong>${brideArrivalTime}</strong> Entrada de la novia</span>
           </div>
 
           <nav class="mobile-nav-drawer__links" aria-label="Navegación móvil">
@@ -270,7 +271,7 @@ export class WeddingInvitationView {
             </a>
             <a href="#ceremonia" class="mobile-nav-link" data-mobile-nav-link>
               <span class="mobile-nav-link__title">La Ceremonia</span>
-              <span class="mobile-nav-link__sub">Invitados 5:00 PM · Novios 6:00 PM</span>
+              <span class="mobile-nav-link__sub">Invitados ${formattedTime} · Novia ${brideArrivalTime}</span>
             </a>
             <a href="#itinerario" class="mobile-nav-link" data-mobile-nav-link>
               <span class="mobile-nav-link__title">Itinerario de la Boda</span>
@@ -419,8 +420,8 @@ export class WeddingInvitationView {
                   <span class="ceremony-detail-label">La hora</span>
                   <strong class="ceremony-detail-value tabular-nums">${formattedTime}</strong>
                   <div class="ceremony-schedule-badges">
-                    <span class="ceremony-schedule-badge"><strong>5:00 PM</strong> · Recepción de invitados</span>
-                    <span class="ceremony-schedule-badge"><strong>6:00 PM</strong> · Entrada del novio y la novia</span>
+                    <span class="ceremony-schedule-badge"><strong>${formattedTime}</strong> · Recepción de invitados</span>
+                    <span class="ceremony-schedule-badge"><strong>${brideArrivalTime}</strong> · Entrada de la novia</span>
                   </div>
                 </div>
 
@@ -465,7 +466,7 @@ export class WeddingInvitationView {
               <p class="section-kicker">PROGRAMA DE NUESTRA CELEBRACIÓN</p>
               <h2 id="itinerary-heading" class="section-serif-title">Itinerario de nuestra boda</h2>
               <p class="ceremony-intro-text">
-                Todo comienza a las <strong>5:00 PM</strong> con la recepción de nuestros invitados, y a las <strong>6:00 PM</strong> daremos inicio con la entrada del novio y la novia este ${this.config.date.displayDate}.
+                Todo comienza a las <strong>${formattedTime}</strong> con la recepción de nuestros invitados, y a las <strong>${brideArrivalTime}</strong> daremos inicio con la entrada de la novia este ${this.config.date.displayDate}.
               </p>
 
               <div class="itinerary-timeline">
@@ -597,7 +598,7 @@ export class WeddingInvitationView {
               <div class="closing-summary-row">
                 <span>${this.config.date.displayDate}</span>
                 <span class="closing-summary-sep" aria-hidden="true">·</span>
-                <span class="tabular-nums">Recepción: 5:00 PM · Novios: 6:00 PM</span>
+                <span class="tabular-nums">Recepción: ${formattedTime} · Novia: ${brideArrivalTime}</span>
                 <span class="closing-summary-sep" aria-hidden="true">·</span>
                 <span>${escapeHtml(venueInfo.primaryTitle)}</span>
               </div>
@@ -643,7 +644,7 @@ export class WeddingInvitationView {
         <!-- Barra inferior con acceso directo al Panel de Administrador para subir imágenes y editar datos -->
         <footer class="invitation-utility-footer">
           <div class="utility-footer-inner">
-            <span>${this.config.couple.fullNamesDisplay} · ${this.config.date.displayDate} · 5:00 PM</span>
+            <span>${this.config.couple.fullNamesDisplay} · ${this.config.date.displayDate} · ${formattedTime}</span>
             <div class="utility-footer-links">
               ${
                 this.callbacks.onLaunchXR
