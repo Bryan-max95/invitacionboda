@@ -200,6 +200,13 @@ export class EnvelopeCover {
                       <stop offset="55%" stop-color="#0F2A24" />
                       <stop offset="100%" stop-color="#091B17" />
                     </linearGradient>
+                    <pattern id="closedFlapPaperPattern" patternUnits="userSpaceOnUse" width="560" height="360">
+                      <rect width="560" height="360" fill="url(#closedFlapEmeraldGrad)" />
+                      <image href="/images/sobre-grabado.svg" width="280" height="240" opacity=".13" />
+                      <image href="/images/sobre-grabado.svg" x="280" width="280" height="240" opacity=".13" />
+                      <image href="/images/sobre-grabado.svg" y="240" width="280" height="240" opacity=".13" />
+                      <image href="/images/sobre-grabado.svg" x="280" y="240" width="280" height="240" opacity=".13" />
+                    </pattern>
                   </defs>
                   <path
                     id="closed-flap-shadow-path"
@@ -209,7 +216,7 @@ export class EnvelopeCover {
                   <path
                     id="closed-flap-outer-path"
                     d="M 0,0 L 560,0 L 300,198 Q 280,214 260,198 Z"
-                    fill="url(#closedFlapEmeraldGrad)"
+                    fill="url(#closedFlapPaperPattern)"
                   />
                 </svg>
 

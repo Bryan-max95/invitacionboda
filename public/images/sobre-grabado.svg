@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="240" viewBox="0 0 280 240">
+  <defs>
+    <g id="petal"><path d="M0 0C-9-7-14-20-5-24C5-29 13-13 0 0Z"/></g>
+    <g id="flower" fill="none" stroke="currentColor" stroke-width=".75">
+      <use href="#petal"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(144)"/><use href="#petal" transform="rotate(216)"/><use href="#petal" transform="rotate(288)"/>
+      <circle r="3"/><path d="M-1-6L0-14M5-2L12-5M3 5L7 11M-4 4L-9 9M-6-2L-13-5"/>
+    </g>
+    <g id="sprig" fill="none" stroke="currentColor" stroke-width=".75" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 100C-4 67 15 36 18 3M2 78C-17 72-23 63-25 53M9 53C29 48 34 38 36 28"/>
+      <path d="M1 81C-20 88-31 79-33 68C-17 65-4 70 1 81ZM6 65C21 69 32 62 36 51C22 48 12 54 6 65ZM13 35C-4 36-14 27-15 16C1 18 9 24 13 35ZM18 18C29 15 32 6 29-5C19 1 17 8 18 18Z"/>
+      <use href="#flower" transform="translate(18 1) scale(.7)"/>
+      <use href="#flower" transform="translate(-25 51) scale(.45) rotate(-20)"/>
+      <use href="#flower" transform="translate(36 27) scale(.45) rotate(20)"/>
+    </g>
+    <filter id="fibres"><feTurbulence type="fractalNoise" baseFrequency=".72 .95" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+  </defs>
+  <rect width="280" height="240" fill="#fff" filter="url(#fibres)" opacity=".22"/>
+  <g color="#d6d9be">
+    <use href="#sprig" transform="translate(46 40) rotate(-28)"/>
+    <use href="#sprig" transform="translate(199 172) rotate(155)"/>
+    <use href="#sprig" transform="translate(255 24) rotate(20) scale(.55)"/>
+    <use href="#sprig" transform="translate(107 220) rotate(-65) scale(.55)"/>
+  </g>
+</svg>
