@@ -4,7 +4,6 @@ import { LightboxModal } from './components/LightboxModal';
 import { RsvpModal } from './components/RsvpModal';
 import { WeddingInvitationView } from './components/WeddingInvitationView';
 import type { WeddingConfig } from './types';
-import { Wedding3DExperience } from './xr/WeddingXRScene';
 
 export class WeddingInvitationApp {
   private countdown: ReturnType<typeof calculateWeddingCountdown>;
@@ -16,13 +15,11 @@ export class WeddingInvitationApp {
   private invitationMount!: HTMLElement;
   private lightboxMount!: HTMLElement;
   private rsvpMount!: HTMLElement;
-  private xr3dMount!: HTMLElement;
 
   private envelopeCover!: EnvelopeCover;
   private invitationView!: WeddingInvitationView;
   private lightboxModal!: LightboxModal;
   private rsvpModal!: RsvpModal;
-  private wedding3DExperience!: Wedding3DExperience;
 
   private countdownTimerId: number | null = null;
   private onVisibilityChange: (() => void) | null = null;
@@ -35,14 +32,12 @@ export class WeddingInvitationApp {
       <div id="invitation-mount"></div>
       <div id="lightbox-mount"></div>
       <div id="rsvp-mount"></div>
-      <div id="xr-3d-mount"></div>
     `;
 
     this.envelopeMount = root.querySelector<HTMLElement>('#envelope-mount')!;
     this.invitationMount = root.querySelector<HTMLElement>('#invitation-mount')!;
     this.lightboxMount = root.querySelector<HTMLElement>('#lightbox-mount')!;
     this.rsvpMount = root.querySelector<HTMLElement>('#rsvp-mount')!;
-    this.xr3dMount = root.querySelector<HTMLElement>('#xr-3d-mount')!;
 
     this.refreshCountdownState();
 
@@ -59,8 +54,6 @@ export class WeddingInvitationApp {
       },
     );
 
-    // 2. Vista 3D creada desde cero (Santuario 3D, Dos Anillos de Boda de oro 24k y Carta Decorativa "¡Te esperamos!")
-    this.wedding3DExperience = new Wedding3DExperience(this.xr3dMount, this.config);
 
     // 3. Vista principal de la invitación
     this.invitationView = new WeddingInvitationView(
@@ -78,9 +71,6 @@ export class WeddingInvitationApp {
         },
         onOpenLightbox: (photoId) => {
           this.lightboxModal.openByPhotoId(photoId);
-        },
-        onLaunchXR: () => {
-          this.wedding3DExperience.open();
         },
       },
     );
@@ -136,6 +126,5 @@ export class WeddingInvitationApp {
     if (this.onWindowFocus) {
       window.removeEventListener('focus', this.onWindowFocus);
     }
-    this.wedding3DExperience?.close();
   }
 }

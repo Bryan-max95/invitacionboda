@@ -14,7 +14,6 @@ export interface InvitationViewCallbacks {
   onReplayEnvelope: () => void;
   onOpenRsvp: () => void;
   onOpenLightbox: (photoId: PhotoItem['id']) => void;
-  onLaunchXR?: () => void;
 }
 
 export class WeddingInvitationView {
@@ -195,14 +194,6 @@ export class WeddingInvitationView {
           <div class="topbar-action shrink-0">
             <button
               type="button"
-              id="topbar-launch-xr-btn"
-              class="btn-outline-sm topbar-desktop-only whitespace-nowrap shrink-0"
-              aria-label="Abrir vista 3D XR en la iglesia con anillos de boda y carta"
-            >
-              Vista 3D XR
-            </button>
-            <button
-              type="button"
               id="topbar-replay-envelope-btn"
               class="btn-outline-sm topbar-desktop-only whitespace-nowrap shrink-0"
               aria-label="Volver a ver el sobre cerrado y repetir la apertura de la carta"
@@ -300,13 +291,6 @@ export class WeddingInvitationView {
               Asistir
             </button>
             <div class="mobile-nav-drawer__grid-btns">
-              <button
-                type="button"
-                id="mobile-drawer-xr-btn"
-                class="btn-secondary"
-              >
-                Vista 3D XR
-              </button>
               <button
                 type="button"
                 id="mobile-drawer-envelope-btn"
@@ -620,13 +604,6 @@ export class WeddingInvitationView {
                 >
                   Ver la carta
                 </button>
-                <button
-                  type="button"
-                  id="closing-launch-xr-btn"
-                  class="btn-outline-sm whitespace-nowrap shrink-0"
-                >
-                  Vista 3D XR
-                </button>
               </div>
 
 
@@ -642,16 +619,7 @@ export class WeddingInvitationView {
         <footer class="invitation-utility-footer">
           <div class="utility-footer-inner">
             <span>${this.config.couple.fullNamesDisplay} · ${this.config.date.displayDate} · ${formattedTime}</span>
-            <div class="utility-footer-links">
-              ${
-                this.callbacks.onLaunchXR
-                  ? `<span aria-hidden="true">·</span>
-                     <button type="button" id="footer-launch-xr-btn" class="utility-footer-btn">
-                       Vista 3D XR
-                     </button>`
-                  : ''
-              }
-            </div>
+
           </div>
         </footer>
       </div>
@@ -729,12 +697,6 @@ export class WeddingInvitationView {
         this.callbacks.onOpenRsvp();
       });
     this.container
-      .querySelector<HTMLButtonElement>('#mobile-drawer-xr-btn')
-      ?.addEventListener('click', () => {
-        this.setMobileMenuOpen(false);
-        this.callbacks.onLaunchXR?.();
-      });
-    this.container
       .querySelector<HTMLButtonElement>('#mobile-drawer-envelope-btn')
       ?.addEventListener('click', () => {
         this.setMobileMenuOpen(false);
@@ -763,14 +725,5 @@ export class WeddingInvitationView {
         });
       });
 
-    this.container
-      .querySelector<HTMLButtonElement>('#topbar-launch-xr-btn')
-      ?.addEventListener('click', () => this.callbacks.onLaunchXR?.());
-    this.container
-      .querySelector<HTMLButtonElement>('#closing-launch-xr-btn')
-      ?.addEventListener('click', () => this.callbacks.onLaunchXR?.());
-    this.container
-      .querySelector<HTMLButtonElement>('#footer-launch-xr-btn')
-      ?.addEventListener('click', () => this.callbacks.onLaunchXR?.());
   }
 }
