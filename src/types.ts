@@ -81,6 +81,9 @@ export type CountdownStatus = 'upcoming' | 'today' | 'past';
 export interface CountdownResult {
   status: CountdownStatus;
   daysRemaining: number;
+  hoursRemaining: number;
+  minutesRemaining: number;
+  secondsRemaining: number;
   currentDateInTegucigalpa: string;
 }
 

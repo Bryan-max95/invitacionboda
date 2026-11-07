@@ -122,7 +122,7 @@ export class WeddingInvitationApp {
 
     this.countdownTimerId = window.setInterval(() => {
       this.refreshCountdownState();
-    }, 30_000);
+    }, 1_000);
   }
 
   public dispose(): void {
