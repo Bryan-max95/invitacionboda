@@ -614,13 +614,7 @@ export class WeddingInvitationView {
                 >
                   Asistir
                 </button>
-                <button
-                  type="button"
-                  id="closing-share-btn"
-                  class="btn-secondary whitespace-nowrap shrink-0"
-                >
-                  Compartir invitación
-                </button>
+
                 <button
                   type="button"
                   id="closing-replay-envelope-btn"
@@ -637,7 +631,6 @@ export class WeddingInvitationView {
                 </button>
               </div>
 
-              <p id="closing-share-feedback" class="closing-share-feedback" role="status" aria-live="polite" hidden></p>
 
               <div class="closing-signature-block">
                 <p class="closing-calligraphy-names">${this.config.couple.displayTitle}</p>
@@ -683,8 +676,6 @@ export class WeddingInvitationView {
     const closingRsvpBtn = this.container.querySelector<HTMLButtonElement>(
       '#closing-open-rsvp-btn',
     );
-    const shareBtn = this.container.querySelector<HTMLButtonElement>('#closing-share-btn');
-    const shareFeedback = this.container.querySelector<HTMLElement>('#closing-share-feedback');
 
     // Eventos del Menú de Hamburguesa Móvil
     const mobileMenuToggleBtn = this.container.querySelector<HTMLButtonElement>(
@@ -773,40 +764,6 @@ export class WeddingInvitationView {
           }
         });
       });
-
-    shareBtn?.addEventListener('click', async () => {
-      const shareData = {
-        title: `${this.config.couple.displayTitle} — Invitación de Boda`,
-        text: `Acompáñanos a celebrar la boda de ${this.config.couple.fullNamesDisplay} el ${this.config.date.displayDate} (Recepción: 5:00 PM · Entrada de los novios: 6:00 PM).`,
-        url: window.location.href,
-      };
-
-      const showShareFeedback = (msg: string) => {
-        if (!shareFeedback) return;
-        shareFeedback.textContent = msg;
-        shareFeedback.hidden = false;
-        window.setTimeout(() => {
-          shareFeedback.hidden = true;
-        }, 3500);
-      };
-
-      if (typeof navigator.share === 'function') {
-        try {
-          await navigator.share(shareData);
-          showShareFeedback('¡Gracias por compartir nuestra invitación!');
-          return;
-        } catch (err) {
-          if ((err as Error)?.name === 'AbortError') return;
-        }
-      }
-
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        showShareFeedback('Enlace copiado al portapapeles para compartir.');
-      } catch {
-        showShareFeedback(`Enlace de la invitación: ${window.location.href}`);
-      }
-    });
 
     this.container
       .querySelector<HTMLButtonElement>('#topbar-launch-xr-btn')
