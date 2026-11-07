@@ -61,19 +61,27 @@ export const DEFAULT_WEDDING_CONFIG: WeddingConfig = {
       icon: 'ceremony',
     },
     {
-      id: 'comida',
-      time: '7:50 PM',
-      title: 'Cena y Banquete · Música de Adoración',
+      id: 'adoracion-1',
+      time: '7:50 PM – 8:30 PM',
+      title: 'Adoración a Dios',
       description:
-        'A las 7:50 PM compartimos la cena y el banquete nupcial, acompañados de música de adoración a Dios, en familia y comunión.',
+        'De 7:50 PM a 8:30 PM compartimos un tiempo de música de adoración y alabanza a Dios, agradeciendo Su amor y bendición sobre nuestro hogar.',
+      icon: 'worship',
+    },
+    {
+      id: 'comida',
+      time: '8:30 PM – 9:20 PM',
+      title: 'Cena y Banquete Nupcial',
+      description:
+        'De 8:30 PM a 9:20 PM disfrutamos juntos la cena y el banquete nupcial, en familia y comunión.',
       icon: 'dinner',
     },
     {
       id: 'adoracion-final',
-      time: '9:30 PM',
+      time: '9:20 PM – 9:40 PM',
       title: 'Adoración, Música y Alabanza Final',
       description:
-        'A las 9:30 PM cerramos esta noche especial con música de adoración, alabanza a Dios y una oración de agradecimiento y despedida.',
+        'De 9:20 PM a 9:40 PM cerramos esta noche especial con veinte minutos de música de adoración y alabanza a Dios. Finalizamos a las 9:40 PM.',
       icon: 'closing-worship',
     },
   ],
