@@ -2,6 +2,7 @@ import { CountdownResult, ItineraryItem, PhotoItem, WeddingConfig } from '../typ
 import { formatVenueDisplay, formatWeddingTime } from '../config/weddingConfig';
 import { getPhotoSrc } from '../utils/photoArtwork';
 import { escapeHtml } from '../utils/escapeHtml';
+import { GIFT_MESSAGE } from '../config/weddingMessages';
 import {
   renderArchBotanicalSprigSvg,
   renderCornerBotanicalSvg,
@@ -338,6 +339,7 @@ export class WeddingInvitationView {
                   ${renderMainCountdownMarkup(this.countdown)}
                 </div>
 
+                <p class="gift-message gift-message--hero">${GIFT_MESSAGE}</p>
                 <!-- Dos acciones principales -->
                 <div class="hero-cta-group">
                   <button
@@ -600,6 +602,10 @@ export class WeddingInvitationView {
                 <span>${escapeHtml(venueInfo.primaryTitle)}</span>
               </div>
 
+              <div class="gift-message gift-message--closing">
+                <span class="gift-message__eyebrow">TU PRESENCIA ES NUESTRO MEJOR REGALO</span>
+                <p>${GIFT_MESSAGE}</p>
+              </div>
               <div class="closing-actions-group">
                 <button
                   type="button"
