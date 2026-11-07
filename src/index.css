@@ -2965,6 +2965,9 @@ html.invitation-menu-open body { overflow: hidden; }
 
 /* Papeler?a de los novios y marco de acuarela original. */
 .wedding-monogram { display:block; width:min(440px,85vw); height:auto; margin:auto; mix-blend-mode:multiply; }
+.wedding-monogram--type { text-align:center; color:#54435e; padding:20px; }
+.wedding-monogram--type > span { display:block; font-family:var(--font-script); font-size:clamp(3rem,8vw,5rem); line-height:1.3; }
+.wedding-monogram--type > small { display:block; font-family:var(--font-serif); font-size:1rem; letter-spacing:.2em; color:var(--text-dark-green); }
 .envelope-cover__botanicals, .closing-botanicals { background:none; opacity:1; pointer-events:none; overflow:hidden; }
 .botanical-corner { display:block; width:clamp(140px,23vw,330px); height:auto; aspect-ratio:1; background:url('/images/flores-esquina.png') center / contain no-repeat; opacity:.92; }
 .botanical-corner--top-left { top:0; left:0; transform:none; }

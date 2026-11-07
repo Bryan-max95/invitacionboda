@@ -7,7 +7,7 @@ import { readWeddingConfig } from '../../lib/wedding';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Administración | Bryan & Lyndel',
+  title: 'Administración | Lyndel & Bryan',
   robots: { index: false, follow: false },
 };
 

@@ -4,7 +4,7 @@ export default function AdminLogin() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   return <main className="admin-panel-page"><section className="rsvp-modal-card admin-login-card">
-    <p className="rsvp-modal-kicker">Bryan &amp; Lyndel</p>
+    <p className="rsvp-modal-kicker">Lyndel &amp; Bryan</p>
     <h1 className="rsvp-modal-title">Acceso al panel</h1>
     <form className="rsvp-form" onSubmit={async event => {
       event.preventDefault(); setBusy(true); setError('');

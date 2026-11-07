@@ -385,7 +385,7 @@ export class EnvelopeCover {
                   />
                 </svg>
 
-                <!-- 6. Sello de cera DORADO realista en 3D con iniciales B & L -->
+                <!-- 6. Sello de cera DORADO realista en 3D con iniciales L & B -->
                 ${this.renderRealisticGoldWaxSeal()}
               </div>
 

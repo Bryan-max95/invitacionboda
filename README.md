@@ -1,6 +1,6 @@
 ﻿# invitacionboda
 
-Invitación de Bryan y Lyndel en Next.js. Panel privado en `/panel.bwp.bl`, fotografías y configuración compartidas en Neon Postgres, y confirmaciones reales de asistencia.
+Invitación de Lyndel y Bryan en Next.js. Panel privado en `/panel.bwp.bl`, fotografías y configuración compartidas en Neon Postgres, y confirmaciones reales de asistencia.
 
 ## Instalación
 

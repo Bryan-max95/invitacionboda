@@ -50,7 +50,7 @@ export class ConfigAndExportDrawer {
         <div class="rsvp-modal-card config-drawer-card admin-panel-card">
           <div class="rsvp-modal-header">
             <div>
-              <p class="rsvp-modal-kicker">Panel de Administración · Bryan &amp; Lyndel</p>
+              <p class="rsvp-modal-kicker">Panel de Administración · Lyndel &amp; Bryan</p>
               <h2 id="config-drawer-title" class="rsvp-modal-title">Administrar Invitación y Fotos</h2>
             </div>
             <button
@@ -109,7 +109,7 @@ export class ConfigAndExportDrawer {
     return `
       <div class="rsvp-form">
         <p class="rsvp-contact-note">
-          Los cambios se guardan en la base de datos y se muestran en todos los dispositivos. Desde este <strong>Panel de Administrador</strong> puedes subir las fotografías reales de <strong>Bryan &amp; Lyndel</strong> desde tu celular o computadora. Se optimizan y guardan automáticamente para verse al instante en toda la invitación y en el visor de pantalla completa.
+          Los cambios se guardan en la base de datos y se muestran en todos los dispositivos. Desde este <strong>Panel de Administrador</strong> puedes subir las fotografías reales de <strong>Lyndel &amp; Bryan</strong> desde tu celular o computadora. Se optimizan y guardan automáticamente para verse al instante en toda la invitación y en el visor de pantalla completa.
         </p>
 
         <div class="admin-photo-grid">

@@ -25,7 +25,7 @@ const _camTargetPos = new THREE.Vector3();
 const _lookAtTarget = new THREE.Vector3();
 
 /**
- * Experiencia 3D interactiva en una IGLESIA CRISTIANA EVANGÉLICA NUPCIAL para Bryan & Lyndel.
+ * Experiencia 3D interactiva en una IGLESIA CRISTIANA EVANGÉLICA NUPCIAL para Lyndel & Bryan.
  *
  * Incluye:
  * 1. Interior arquitectónico contemporáneo de Iglesia Evangélica en 3D:
@@ -41,7 +41,7 @@ const _lookAtTarget = new THREE.Vector3();
  *      luminarias colgantes modernas cálidas.
  * 2. Dos anillos de boda en oro de 24k entrelazados (con diamante solitario) sobre la mesa central.
  * 3. Carta decorativa 3D en papel mate verde #0F2A24 (sin exceso de brillo y sin líneas doradas
- *    en las páginas) con sello de cera dorado B & L, que al abrirse muestra "¡Te esperamos!".
+ *    en las páginas) con sello de cera dorado L & B, que al abrirse muestra "¡Te esperamos!".
  */
 export class Wedding3DExperience {
   private container: HTMLElement;
@@ -2092,7 +2092,7 @@ export class Wedding3DExperience {
 
     ctx.fillStyle = '#4B6049';
     ctx.font = '700 28px "Cormorant Garamond", Georgia, serif';
-    ctx.fillText('B & L', 512, 128);
+    ctx.fillText('L & B', 512, 128);
 
     ctx.fillStyle = '#766580';
     ctx.font = '600 21px "Plus Jakarta Sans", sans-serif';

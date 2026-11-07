@@ -3,20 +3,20 @@ import React from 'react';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Bryan & Lyndel — Invitación de Boda | 18 de diciembre de 2026',
+  title: 'Lyndel & Bryan — Invitación de Boda | 18 de diciembre de 2026',
   description:
-    'Invitación de boda digital de Bryan Cárcamo y Lyndel Pérez — 18 de diciembre de 2026.',
+    'Invitación de boda digital de Lyndel Pérez y Bryan Cárcamo — 18 de diciembre de 2026.',
   openGraph: {
-    title: 'Bryan & Lyndel — Invitación de Boda',
+    title: 'Lyndel & Bryan — Invitación de Boda',
     description:
-      'Invitación de boda digital de Bryan Cárcamo y Lyndel Pérez — 18 de diciembre de 2026.',
+      'Invitación de boda digital de Lyndel Pérez y Bryan Cárcamo — 18 de diciembre de 2026.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Bryan & Lyndel — Invitación de Boda',
+    title: 'Lyndel & Bryan — Invitación de Boda',
     description:
-      'Invitación de boda digital de Bryan Cárcamo y Lyndel Pérez — 18 de diciembre de 2026.',
+      'Invitación de boda digital de Lyndel Pérez y Bryan Cárcamo — 18 de diciembre de 2026.',
   },
 };
 
