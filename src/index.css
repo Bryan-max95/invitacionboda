@@ -721,6 +721,23 @@ button {
   align-items: center;
   gap: clamp(36px, 5.5vw, 76px);
 }
+.hero-container--intro { display:flex; justify-content:center; max-width:780px; }
+.hero-container--intro .hero-content-col { width:100%; align-items:center; text-align:center; }
+.hero-container--intro .hero-countdown-slot { margin-top:16px; margin-bottom:0; }
+.wedding-schedule-wrap { margin:32px auto 0; max-width:800px; border:1px solid #b7bea980; border-radius:16px; overflow:hidden; background:#faf7efb8; box-shadow:0 8px 24px #34432f08; }
+.wedding-schedule { width:100%; border-collapse:collapse; text-align:left; table-layout:fixed; }
+.wedding-schedule th { padding:18px 24px; background:#e1e7d9b3; color:#34432f; font-size:.8rem; letter-spacing:.06em; font-weight:600; }
+.wedding-schedule th:first-child { width:45%; }
+.wedding-schedule td { padding:20px 24px; color:#34432f; font-size:.98rem; line-height:1.7; vertical-align:top; overflow-wrap:break-word; }
+.wedding-schedule tr + tr td { border-top:1px solid #c7c9b666; }
+.wedding-schedule tbody tr:nth-child(even) { background:#ffffff55; }
+.wedding-schedule td:first-child { font-weight:600; color:#665071; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+@media(max-width:600px) {
+  .wedding-schedule th,.wedding-schedule td { padding:16px 12px; }
+  .wedding-schedule td { font-size:.86rem; }
+  .wedding-schedule th:first-child { width:46%; }
+}
 
 .hero-content-col {
   display: flex;

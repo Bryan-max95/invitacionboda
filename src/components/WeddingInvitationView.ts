@@ -1,10 +1,9 @@
-import { CountdownResult, ItineraryItem, PhotoItem, WeddingConfig } from '../types';
+import { CountdownResult, PhotoItem, WeddingConfig } from '../types';
 import { formatVenueDisplay, formatWeddingTime } from '../config/weddingConfig';
 import { getPhotoSrc } from '../utils/photoArtwork';
 import { escapeHtml } from '../utils/escapeHtml';
 import { renderGiftMessage } from './GiftMessage';
 import {
-  renderArchBotanicalSprigSvg,
   renderCornerBotanicalSvg,
   renderFloralDividerSvg,
 } from './BotanicalDecor';
@@ -89,49 +88,6 @@ export class WeddingInvitationView {
 
   private isMobileMenuOpen = false;
 
-  private renderItineraryIcon(iconType: ItineraryItem['icon']): string {
-    switch (iconType) {
-      case 'reception':
-        return `
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        `;
-      case 'ceremony':
-        return `
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-            <circle cx="9" cy="12" r="5" />
-            <circle cx="15" cy="12" r="5" />
-            <path d="M12 4l1.5 2L12 8l-1.5-2L12 4z" />
-          </svg>
-        `;
-      case 'worship':
-        return `
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-            <path d="M9 18V5l12-2v13" stroke-linecap="round" stroke-linejoin="round" />
-            <circle cx="6" cy="18" r="3" />
-            <circle cx="18" cy="16" r="3" />
-          </svg>
-        `;
-      case 'dinner':
-        return `
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-            <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" stroke-linecap="round" />
-            <path d="M7 2v20" stroke-linecap="round" />
-            <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        `;
-      case 'closing-worship':
-      default:
-        return `
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" stroke-linejoin="round" />
-          </svg>
-        `;
-    }
-  }
-
   private setMobileMenuOpen(open: boolean): void {
     this.isMobileMenuOpen = open;
     const toggleBtn = this.container.querySelector<HTMLButtonElement>('#mobile-menu-toggle-btn');
@@ -165,11 +121,10 @@ export class WeddingInvitationView {
   }
 
   public render(): void {
-    const heroPhoto = this.config.photos.find((p) => p.role === 'hero') || this.config.photos[0];
     const promisePhoto = this.config.photos.find((p) => p.id === 'bl-66') || this.config.photos[1];
 
     const formattedTime = escapeHtml(formatWeddingTime(this.config));
-    const brideArrivalTime = escapeHtml(this.config.itinerary.find(item => item.id === 'ceremonia')?.time || '7:00 PM');
+    const brideArrivalTime = escapeHtml(this.config.itinerary.find(item => item.id === 'ceremonia')?.time.split(' – ')[0] || '7:00 p. m.');
     const venueInfo = formatVenueDisplay(this.config);
 
     this.container.innerHTML = `
@@ -305,7 +260,7 @@ export class WeddingInvitationView {
         <main id="inicio" class="invitation-main">
           <!-- 5. Invitación principal después de abrir la carta (Dos columnas en computadora, una en celular) -->
           <section class="hero-section" aria-labelledby="hero-heading">
-            <div class="hero-container">
+            <div class="hero-container hero-container--intro">
               <div class="hero-content-col">
                 <p class="section-kicker">CON EL CORAZÓN LLENO DE AMOR</p>
                 <p class="hero-married-announcement">¡Nos casamos!</p>
@@ -324,59 +279,9 @@ export class WeddingInvitationView {
                   ${renderMainCountdownMarkup(this.countdown)}
                 </div>
 
-                ${renderGiftMessage('hero')}
-                <!-- Dos acciones principales -->
-                <div class="hero-cta-group">
-                  <button
-                    type="button"
-                    id="hero-scroll-ceremony-btn"
-                    class="btn-secondary whitespace-nowrap shrink-0"
-                  >
-                    Descubre nuestra invitación
-                  </button>
-                  <button
-                    type="button"
-                    id="hero-open-rsvp-btn"
-                    class="btn-primary whitespace-nowrap shrink-0"
-                  >
-                    Asistir
-                  </button>
-                </div>
+
               </div>
 
-              <!-- Columna derecha: Fotografía principal en marco de arco -->
-              <div class="hero-photo-col">
-                <div class="hero-arch-wrapper">
-                  ${renderArchBotanicalSprigSvg()}
-
-                  <button
-                    type="button"
-                    class="hero-arch-frame-btn"
-                    data-lightbox-open="${heroPhoto.id}"
-                    aria-label="Ampliar fotografía principal de ${this.config.couple.displayTitle}"
-                  >
-                    <div class="hero-arch-frame">
-                      <img
-                        src="${getPhotoSrc(heroPhoto)}"
-                        alt="${heroPhoto.alt}"
-                        class="hero-arch-img"
-                        style="object-position: ${heroPhoto.focalPoint};"
-                        referrerpolicy="no-referrer"
-                      />
-                      <span class="photo-zoom-hint" aria-hidden="true">
-                        Toca para ver completa
-                      </span>
-                    </div>
-                  </button>
-
-                  <!-- Detalle circular lavanda con el día y el mes de la boda (18 DIC) -->
-                  <div class="hero-lavender-date-badge" aria-label="Fecha de la boda: ${this.config.date.dayNumber} de diciembre">
-                    <span class="hero-lavender-date-badge__day tabular-nums">${this.config.date.dayNumber}</span>
-                    <span class="hero-lavender-date-badge__rule" aria-hidden="true"></span>
-                    <span class="hero-lavender-date-badge__month">${this.config.date.monthShort}</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </section>
 
@@ -449,31 +354,12 @@ export class WeddingInvitationView {
             <div class="section-narrow-container">
               <p class="section-kicker">PROGRAMA DE NUESTRA CELEBRACIÓN</p>
               <h2 id="itinerary-heading" class="section-serif-title">Itinerario de nuestra boda</h2>
-              <p class="ceremony-intro-text">
-                Todo comienza a las <strong>${formattedTime}</strong> con la recepción de nuestros invitados, y a las <strong>${brideArrivalTime}</strong> daremos inicio con la entrada de la novia este ${this.config.date.displayDate}.
-              </p>
-
-              <div class="itinerary-timeline">
-                ${this.config.itinerary
-                  .map(
-                    (item, idx) => `
-                  <article class="itinerary-step-card">
-                    <div class="itinerary-step-card__badge" aria-hidden="true">
-                      <span class="itinerary-step-card__icon">
-                        ${this.renderItineraryIcon(item.icon)}
-                      </span>
-                      <span class="itinerary-step-card__num">0${idx + 1}</span>
-                    </div>
-
-                    <div class="itinerary-step-card__body">
-                      <span class="itinerary-step-card__time tabular-nums">${escapeHtml(item.time)}</span>
-                      <h3 class="itinerary-step-card__title">${escapeHtml(item.title)}</h3>
-                      <p class="itinerary-step-card__desc">${escapeHtml(item.description)}</p>
-                    </div>
-                  </article>
-                `,
-                  )
-                  .join('')}
+              <div class="wedding-schedule-wrap">
+                <table class="wedding-schedule">
+                  <caption class="sr-only">Horario y actividades de nuestra boda</caption>
+                  <thead><tr><th scope="col">Horario</th><th scope="col">Actividad</th></tr></thead>
+                  <tbody>${this.config.itinerary.map(item => `<tr><td class="tabular-nums">${escapeHtml(item.time)}</td><td>${escapeHtml(item.title)}</td></tr>`).join('')}</tbody>
+                </table>
               </div>
             </div>
           </section>
@@ -635,10 +521,6 @@ export class WeddingInvitationView {
     const replayBottomBtn = this.container.querySelector<HTMLButtonElement>(
       '#closing-replay-envelope-btn',
     );
-    const scrollCeremonyBtn = this.container.querySelector<HTMLButtonElement>(
-      '#hero-scroll-ceremony-btn',
-    );
-    const heroRsvpBtn = this.container.querySelector<HTMLButtonElement>('#hero-open-rsvp-btn');
     const closingRsvpBtn = this.container.querySelector<HTMLButtonElement>(
       '#closing-open-rsvp-btn',
     );
@@ -706,12 +588,7 @@ export class WeddingInvitationView {
     replayTopBtn?.addEventListener('click', () => this.callbacks.onReplayEnvelope());
     replayBottomBtn?.addEventListener('click', () => this.callbacks.onReplayEnvelope());
 
-    scrollCeremonyBtn?.addEventListener('click', () => {
-      const ceremonySection = this.container.querySelector<HTMLElement>('#ceremonia');
-      ceremonySection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
 
-    heroRsvpBtn?.addEventListener('click', () => this.callbacks.onOpenRsvp());
     closingRsvpBtn?.addEventListener('click', () => this.callbacks.onOpenRsvp());
 
     this.container

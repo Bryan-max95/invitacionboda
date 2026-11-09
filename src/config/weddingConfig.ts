@@ -46,42 +46,51 @@ export const DEFAULT_WEDDING_CONFIG: WeddingConfig = {
   itinerary: [
     {
       id: 'recepcion-invitados',
-      time: '6:00 PM',
-      title: 'Recepción y Llegada de Invitados',
-      description:
-        'Te recibimos a las 6:00 PM para compartir la bienvenida y ubicarte con comodidad antes de la ceremonia.',
+      time: '6:00 p. m. – 6:30 p. m.',
+      title: 'Recepción de invitados',
+      description: '',
       icon: 'reception',
     },
     {
+      id: 'cortejo',
+      time: '6:30 p. m. – 7:00 p. m.',
+      title: 'Maestro de ceremonias (cortejo)',
+      description: '',
+      icon: 'ceremony',
+    },
+    {
       id: 'ceremonia',
-      time: '7:00 PM',
-      title: 'Entrada de la Novia · Ceremonia Nupcial',
-      description:
-        'A las 7:00 PM llega la novia y comienza nuestra ceremonia para celebrar el pacto matrimonial ante Dios.',
+      time: '7:00 p. m. – 7:30 p. m.',
+      title: 'Entrada de la novia',
+      description: '',
       icon: 'ceremony',
     },
     {
       id: 'adoracion-1',
-      time: '7:50 PM – 8:30 PM',
-      title: 'Adoración a Dios',
-      description:
-        'De 7:50 PM a 8:30 PM compartimos un tiempo de música de adoración y alabanza a Dios, agradeciendo Su amor y bendición sobre nuestro hogar.',
+      time: '7:30 p. m. – 7:50 p. m.',
+      title: 'Adoración (20 minutos)',
+      description: '',
       icon: 'worship',
     },
     {
+      id: 'fotografias',
+      time: '7:50 p. m. – 8:20 p. m.',
+      title: 'Fotografías en las mesas con los invitados',
+      description: '',
+      icon: 'reception',
+    },
+    {
       id: 'comida',
-      time: '8:30 PM – 9:20 PM',
-      title: 'Cena y Banquete Nupcial',
-      description:
-        'De 8:30 PM a 9:20 PM disfrutamos juntos la cena y el banquete nupcial, en familia y comunión.',
+      time: '8:20 p. m. – 9:00 p. m.',
+      title: 'Cena',
+      description: '',
       icon: 'dinner',
     },
     {
       id: 'adoracion-final',
-      time: '9:20 PM – 9:40 PM',
-      title: 'Adoración, Música y Alabanza Final',
-      description:
-        'De 9:20 PM a 9:40 PM cerramos esta noche especial con veinte minutos de música de adoración y alabanza a Dios. Finalizamos a las 9:40 PM.',
+      time: '9:00 p. m. – 9:30 p. m.',
+      title: 'Cierre del evento',
+      description: '',
       icon: 'closing-worship',
     },
   ],
