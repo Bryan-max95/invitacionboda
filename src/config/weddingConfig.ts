@@ -177,6 +177,7 @@ export function formatVenueDisplay(config: WeddingConfig): {
   hasMapLink: boolean;
   mapHref: string;
   mapEmbedHref: string;
+  directionsHref: string;
 } {
   const churchName = config.venue.churchName.trim();
   const address = config.venue.address.trim();
@@ -208,6 +209,9 @@ export function formatVenueDisplay(config: WeddingConfig): {
   const mapEmbedHref = hasMapLink && mapQuery
     ? `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=17&output=embed&hl=es`
     : '';
+  const directionsHref = hasMapLink && mapQuery
+    ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapQuery)}`
+    : mapHref;
 
   return {
     primaryTitle,
@@ -216,5 +220,6 @@ export function formatVenueDisplay(config: WeddingConfig): {
     hasMapLink,
     mapHref,
     mapEmbedHref,
+    directionsHref,
   };
 }

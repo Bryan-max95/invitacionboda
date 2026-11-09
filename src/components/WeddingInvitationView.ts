@@ -328,12 +328,10 @@ export class WeddingInvitationView {
                     venueInfo.hasMapLink
                       ? `<div class="ceremony-map-action">
                           <a
-                            href="${escapeHtml(venueInfo.mapHref)}"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="#mapa-iglesia"
                             class="btn-outline-sm whitespace-nowrap"
                           >
-                            Abrir en Google Maps
+                            Ver mapa aquí ↓
                           </a>
                         </div>`
                       : ''
@@ -342,16 +340,21 @@ export class WeddingInvitationView {
               </div>
 
               ${venueInfo.mapEmbedHref ? `
-                <div class="venue-map-card">
+                <div class="venue-map-card" id="mapa-iglesia">
                   <div class="venue-map-card__heading">
                     <div>
                       <p class="section-kicker">AQUÍ NOS ENCONTRAMOS</p>
                       <h3>${escapeHtml(this.config.venue.churchName || venueInfo.primaryTitle)}</h3>
                     </div>
-                    <a class="btn-secondary" href="${escapeHtml(venueInfo.mapHref)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a>
                   </div>
-                  <iframe class="venue-map-card__map" title="Mapa de la iglesia ${escapeHtml(this.config.venue.churchName)}" src="${escapeHtml(venueInfo.mapEmbedHref)}" width="960" height="380" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-                  <p class="venue-map-card__note">Consulta la ubicación y abre Google Maps para trazar tu ruta hasta la iglesia.</p>
+                  <iframe class="venue-map-card__map" title="Mapa de la iglesia ${escapeHtml(this.config.venue.churchName)}" src="${escapeHtml(venueInfo.mapEmbedHref)}" width="960" height="440" loading="eager" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                  <div class="venue-map-card__directions">
+                    <p>Puedes acercar y mover el mapa. Pulsa «Cómo llegar» para ver la ruta desde tu ubicación hasta la iglesia.</p>
+                    <a class="btn-primary" href="${escapeHtml(venueInfo.directionsHref)}" target="_blank" rel="noopener noreferrer">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 3 9 9-9 9-9-9 9-9Z" stroke-linejoin="round"/><path d="M9 15v-4h7m-3-3 3 3-3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Cómo llegar
+                    </a>
+                  </div>
                 </div>` : ''}
 
               <p class="ceremony-closing-quote">
