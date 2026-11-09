@@ -34,9 +34,9 @@ export const DEFAULT_WEDDING_CONFIG: WeddingConfig = {
     placeLabel: 'Iglesia',
     ceremonyLabel: 'Ceremonia y celebración nupcial',
     // Campos preparados para agregar o editar desde el Panel Admin:
-    churchName: '',
+    churchName: 'Ministerio Vida en la Palabra',
     address: '',
-    mapUrl: '',
+    mapUrl: 'https://www.google.com/maps/search/?api=1&query=16.334586%2C-86.503254',
   },
   whatsapp: {
     defaultRecipientPhone: '',
@@ -176,6 +176,7 @@ export function formatVenueDisplay(config: WeddingConfig): {
   addressText: string;
   hasMapLink: boolean;
   mapHref: string;
+  mapEmbedHref: string;
 } {
   const churchName = config.venue.churchName.trim();
   const address = config.venue.address.trim();
@@ -196,11 +197,24 @@ export function formatVenueDisplay(config: WeddingConfig): {
         )}`
       : '';
 
+  let mapQuery = [churchName, address].filter(Boolean).join(', ');
+  if (mapHref) {
+    try {
+      const url = new URL(mapHref);
+      const isGoogleMaps = /(^|\.)google\.[a-z.]+$/.test(url.hostname) && url.pathname.startsWith('/maps');
+      if (isGoogleMaps) mapQuery = url.searchParams.get('query') || url.searchParams.get('q') || mapQuery;
+    } catch { /* Use the configured venue name and address. */ }
+  }
+  const mapEmbedHref = hasMapLink && mapQuery
+    ? `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=17&output=embed&hl=es`
+    : '';
+
   return {
     primaryTitle,
     secondaryDetail,
     addressText: address,
     hasMapLink,
     mapHref,
+    mapEmbedHref,
   };
 }

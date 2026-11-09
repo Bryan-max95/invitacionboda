@@ -333,13 +333,26 @@ export class WeddingInvitationView {
                             rel="noopener noreferrer"
                             class="btn-outline-sm whitespace-nowrap"
                           >
-                            Ver ubicación
+                            Abrir en Google Maps
                           </a>
                         </div>`
                       : ''
                   }
                 </div>
               </div>
+
+              ${venueInfo.mapEmbedHref ? `
+                <div class="venue-map-card">
+                  <div class="venue-map-card__heading">
+                    <div>
+                      <p class="section-kicker">AQUÍ NOS ENCONTRAMOS</p>
+                      <h3>${escapeHtml(this.config.venue.churchName || venueInfo.primaryTitle)}</h3>
+                    </div>
+                    <a class="btn-secondary" href="${escapeHtml(venueInfo.mapHref)}" target="_blank" rel="noopener noreferrer">Abrir en Google Maps ↗</a>
+                  </div>
+                  <iframe class="venue-map-card__map" title="Mapa de la iglesia ${escapeHtml(this.config.venue.churchName)}" src="${escapeHtml(venueInfo.mapEmbedHref)}" width="960" height="380" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                  <p class="venue-map-card__note">Consulta la ubicación y abre Google Maps para trazar tu ruta hasta la iglesia.</p>
+                </div>` : ''}
 
               <p class="ceremony-closing-quote">
                 “Un día para celebrar el amor, juntos.”

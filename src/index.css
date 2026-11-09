@@ -725,6 +725,14 @@ button {
 .hero-container--intro .hero-content-col { width:100%; align-items:center; text-align:center; }
 .hero-container--intro .hero-countdown-slot { margin-top:16px; margin-bottom:0; }
 .wedding-schedule-wrap { margin:32px auto 0; max-width:800px; border:1px solid #b7bea980; border-radius:16px; overflow:hidden; background:#faf7efb8; box-shadow:0 8px 24px #34432f08; }
+.venue-map-card { margin:36px auto 0; border:1px solid #c7c9b680; border-radius:20px; overflow:hidden; background:#faf7ef; box-shadow:0 12px 32px #34432f0c; text-align:left; }
+.venue-map-card__heading { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:18px; padding:24px; }
+.venue-map-card__heading .section-kicker { margin:0 0 8px; font-size:.65rem; }
+.venue-map-card__heading h3 { margin:0; font-family:var(--font-serif); font-size:clamp(1.5rem,3vw,2rem); font-weight:600; color:#34432f; line-height:1.2; }
+.venue-map-card__heading .btn-secondary { font-size:.8rem; padding:10px 16px; }
+.venue-map-card__map { display:block; width:100%; height:380px; border:0; background:#e1e7d9; }
+.venue-map-card__note { margin:0; padding:16px 24px; font-size:.8rem; color:#4b6049; line-height:1.65; }
+@media(max-width:600px) { .venue-map-card__heading { padding:20px; } .venue-map-card__map { height:320px; } .venue-map-card__note { padding:16px 20px; } }
 .wedding-schedule { width:100%; border-collapse:collapse; text-align:left; table-layout:fixed; }
 .wedding-schedule th { padding:18px 24px; background:#e1e7d9b3; color:#34432f; font-size:.8rem; letter-spacing:.06em; font-weight:600; }
 .wedding-schedule th:first-child { width:45%; }
