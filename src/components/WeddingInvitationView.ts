@@ -357,6 +357,11 @@ export class WeddingInvitationView {
                   </div>
                 </div>` : ''}
 
+              <aside class="dress-code-note" aria-label="Vestimenta">
+                <p class="section-kicker">VESTIMENTA</p>
+                <p>El color blanco está reservado exclusivamente para la novia.</p>
+              </aside>
+
               <p class="ceremony-closing-quote">
                 “Un día para celebrar el amor, juntos.”
               </p>
