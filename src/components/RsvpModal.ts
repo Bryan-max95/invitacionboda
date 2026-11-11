@@ -59,7 +59,12 @@ export class RsvpModal {
       this.saving = true; button.disabled = true; status.textContent = 'Guardando...';
       try {
         await serverRequest('/api/rsvp', { method: 'POST', body: JSON.stringify({ id: this.submissionId, fullName: names[0], guestNames: names, attendance: new FormData(form).get('attendance'), guestCount: names.length, message: this.container.querySelector<HTMLTextAreaElement>('#rsvp-message')!.value, recipientTarget: 'any' }) });
-        status.textContent = 'Tu respuesta quedó guardada. ¡Gracias por acompañarnos en este momento especial!';
+        this.submissionId = crypto.randomUUID();
+        form.reset();
+        count = 1;
+        sync();
+        status.textContent = 'La respuesta quedó guardada. Puedes registrar otro grupo de hasta 3 personas.';
+        form.querySelector<HTMLInputElement>('input[name="person"]')?.focus();
       } catch (error) { status.textContent = (error as Error).message; }
       finally { this.saving = false; button.disabled = false; }
     });
